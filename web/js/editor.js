@@ -48,15 +48,14 @@ function change_class(elem_act){
 
 }
 
-function resize() {
-    canvas.width = canvas.clientWidth;
-    canvas.height = canvas.clientHeight;
-}
+ function resize() {
+     canvas.width = canvas.clientWidth;
+     canvas.height = canvas.clientHeight;
+ }
 
-resize();
+ resize();
 
-window.addEventListener("resize", resize);
-//paint
+// window.addEventListener("resize", resize);
 
 function startPos(e) {
     penStyle.painting = true;
@@ -111,7 +110,6 @@ function erase(e){
 let colors = ["red","green","blue","yellow","white","black"];
 let panel = document.getElementById("panel-edit");
 function colorsList(){
-
     localStorage.setItem('colorsArr', JSON.stringify(colors));
     let colorsElem = document.createElement("div");
     colorsElem.className = "colorsCont"
@@ -128,10 +126,14 @@ function colorsList(){
 
     }
 }
-window.addEventListener("click", addColor);
-function addColor(){
-    colors.push("pink");
+let addColor = document.getElementById("add_color");
+addColor.addEventListener("click", addColorInArr);
+function addColorInArr(){
+    let colorsElem = document.querySelector(".colorsCont");
+    panel.removeChild(colorsElem);
+    let newColor = document.createElement("input");
+    newColor.type = "color";
+
 }
-addColor();
 colorsList();
 
