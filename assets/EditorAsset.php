@@ -8,4 +8,8 @@ class EditorAsset extends AssetBundle
     public $js = [
         'js/editor.js'
     ];
+
+    public $css = [
+        'css/style.css'
+    ];
 }
