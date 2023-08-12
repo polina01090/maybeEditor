@@ -13,15 +13,11 @@
 <div id="edit_board">
     <canvas id="editor" style="border: 1px solid black"></canvas>
     <div id="panel-edit">
-        <div>
-            <button class="no_active" id="pen">Brush</button>
-        </div>
-        <div>
-            <button class="no_active" id="eraser">Eraser</button>
-        </div>
+        <button class="no_active" id="pen">Brush</button>
         <div class="option">
             <input type="range" id="size-slider" min="1" max="50" value="5">
         </div>
+        <button class="no_active" id="eraser">Eraser</button>
         <div class="row_buttons">
             <button class="clear-canvas">Clear Canvas</button>
             <button id="add_color">Добавить цвет</button>

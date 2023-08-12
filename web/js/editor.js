@@ -107,14 +107,19 @@ function erase(e){
     eraserStyle.y = e.pageY - this.offsetTop;
     ctx.clearRect(eraserStyle.x-eraserStyle.size/2, eraserStyle.y-eraserStyle.size/2, eraserStyle.size, eraserStyle.size);
 }
-let colors = ["red","green","blue","yellow","white","black"];
 let panel = document.getElementById("panel-edit");
-function colorsList(){
+let colors = ["red","green","blue","yellow","white","black"];
+if (localStorage.getItem('colorsArr')){
+    colors = JSON.parse(localStorage.getItem('colorsArr'));
+} else {
     localStorage.setItem('colorsArr', JSON.stringify(colors));
+}
+colorsList(colors);
+function colorsList(colorsArray){
     let colorsElem = document.createElement("div");
     colorsElem.className = "colorsCont"
     panel.appendChild(colorsElem);
-    for (let color of JSON.parse(localStorage.getItem("colorsArr"))) {
+    for (let color of JSON.parse(colorsArray)){
         let colorElem = document.createElement("button");
         colorElem.style.width = "15px";
         colorElem.style.height = "15px";
@@ -123,17 +128,30 @@ function colorsList(){
         colorElem.addEventListener("click", ()=>{
             penStyle.color = colorElem.style.background;
         })
-
     }
 }
+
 let addColor = document.getElementById("add_color");
 addColor.addEventListener("click", addColorInArr);
+
 function addColorInArr(){
     let colorsElem = document.querySelector(".colorsCont");
     panel.removeChild(colorsElem);
     let newColor = document.createElement("input");
     newColor.type = "color";
-
+    panel.appendChild(newColor);
+    addColor.removeEventListener("click",addColorInArr)
+    addColor.addEventListener("click", function SubmitColor(){
+        console.log(colors)
+        colors.push(newColor.value);
+        localStorage.setItem('colorsArr', JSON.string(colors));
+        console.log(localStorage.getItem('colorsArr'))
+        panel.removeChild(newColor);
+        colorsList(colors);
+        addColor.removeEventListener("click", SubmitColor);
+        addColor.addEventListener("click", addColorInArr);
+    })
 }
-colorsList();
+
+
 
