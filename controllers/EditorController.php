@@ -14,8 +14,5 @@ class EditorController extends Controller
         return $this->render('create');
     }
 
-    public function actionSendImg(){
-        $img = Yii::$app->request->post();
-        return print_r($img, true);
-    }
+
 }

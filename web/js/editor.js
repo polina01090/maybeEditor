@@ -174,15 +174,21 @@ async function convertCanvasToImage() {
     let dataUrl = canvas.toDataURL("image/png");
     // let newTab = window.open('about:blank','image from canvas');
     // newTab.document.write("<img src='" + dataUrl +"' alt='from canvas'/>");
-    let form = new FormData();
-    form.set('url', dataUrl);
-    let res = await fetch("/editor/send-img", {
-        method: "post",
-        body: form
-    });
-    console.log(res)
+    //let form = new FormData();
+    //form.set('url', dataUrl);
+    let res = await fetch("/send/send-img", {
+        method: "POST",
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        },
+        body: JSON.stringify({url: dataUrl}),
 
+    });
+    const responseText = await res.json();
+    console.log(responseText)
 }
+let saveBtn = document.getElementById("save-img");
+saveBtn.addEventListener("click", convertCanvasToImage);
 
 
 
