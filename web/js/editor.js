@@ -176,6 +176,7 @@ async function convertCanvasToImage() {
     // newTab.document.write("<img src='" + dataUrl +"' alt='from canvas'/>");
     //let form = new FormData();
     //form.set('url', dataUrl);
+    console.log(dataUrl)
     let res = await fetch("/send/send-img", {
         method: "POST",
         headers: {
@@ -184,7 +185,7 @@ async function convertCanvasToImage() {
         body: JSON.stringify({url: dataUrl}),
 
     });
-    const responseText = await res.json();
+    const responseText = await res.text();
     console.log(responseText)
 }
 let saveBtn = document.getElementById("save-img");
