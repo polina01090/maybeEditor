@@ -4,29 +4,31 @@
 namespace app\repository;
 
 
-use app\entity\Users;
+use app\entity\Editor;
+use Yii;
 
 class EditorRepository
 {
-    public static function getUserById($id){
-        return Users::find()->where(['id' => $id])->one();
+    public static function getPictureById($id){
+        return Editor::find()->where(['id' => $id])->one();
     }
-    public static function getUserByCondition($where){
-        return Users::find()->where($where)->one();
+    public static function getPictureAsArray($id){
+        return Editor::find()->where(['id' => $id])->asArray()->one();
     }
-    public static function getUsersByCondition($where){
-        return Users::find()->where($where)->all();
+    public static function getPicturesAsArray($where){
+        return Editor::find()->where($where)->asArray()->all();
     }
-    public static function changePassword($user_id, $newPassword){
-        $user = self::getUserById($user_id);
-        $user->password = password_hash($newPassword, PASSWORD_DEFAULT);
-        $user->save();
+    public static function getPictureByCondition($where){
+        return Editor::find()->where($where)->one();
     }
-    public static function addUser($login, $password, $username){
-        $user = new Users();
-        $user->login = $login;
-        $user->password = password_hash($password, PASSWORD_DEFAULT);
-        $user->username = $username;
+    public static function getPicturesByCondition($where){
+        return Editor::find()->where($where)->all();
+    }
+    public static function addPicture($name, $url){
+        $user = new Editor();
+        $user->name = $name;
+        $user->url = $url;
+        $user->user_id = Yii::$app->user->identity->id;
         $user->save();
     }
 }

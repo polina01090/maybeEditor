@@ -7,6 +7,7 @@ namespace app\controllers;
 use app\models\ChangePasswordForm;
 use app\models\LoginForm;
 use app\models\UserAdd;
+use app\repository\EditorRepository;
 use app\repository\UserRepository;
 use Yii;
 use yii\filters\AccessControl;
@@ -68,6 +69,13 @@ class UserController extends Controller
         }
         return $this->render('registration', [
             'model' => $model,
+        ]);
+    }
+
+    public function actionProfile(){
+        $pictures = EditorRepository::getPicturesAsArray(['user_id' => Yii::$app->user->identity->id]);
+        return $this->render('profile', [
+            'model' => $pictures
         ]);
     }
 

@@ -185,8 +185,7 @@ async function convertCanvasToImage() {
         body: JSON.stringify({url: dataUrl}),
 
     });
-    const responseText = await res.text();
-    console.log(responseText)
+    window.location.href = '/user/profile'
 }
 let saveBtn = document.getElementById("save-img");
 saveBtn.addEventListener("click", convertCanvasToImage);
