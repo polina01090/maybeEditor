@@ -59,6 +59,7 @@ resize();
 
 // window.addEventListener("resize", resize);
 let shape = [];
+
 function startPos(e) {
     penStyle.painting = true;
     shape = [];
@@ -67,7 +68,7 @@ function startPos(e) {
 }
 
 function endPos() {
-    if (penStyle.painting){
+    if (penStyle.painting) {
         points.push(shape);
     }
     penStyle.painting = false;
@@ -88,7 +89,7 @@ function draw(e) {
     ctx.stroke();
     ctx.beginPath();
     ctx.moveTo(penStyle.x, penStyle.y);
-    if (!isNaN(penStyle.x) && !isNaN(penStyle.y)){
+    if (!isNaN(penStyle.x) && !isNaN(penStyle.y)) {
         shape.push({x: penStyle.x, y: penStyle.y});
     }
 }
@@ -126,18 +127,15 @@ function erase(e) {
 
 let panel = document.getElementById("panel-edit");
 let colors = ["red", "green", "blue", "yellow", "white", "black"];
-if (!localStorage.getItem("colorsArr")){
+if (!localStorage.getItem("colorsArr")) {
     localStorage.setItem('colorsArr', JSON.stringify(colors))
 }
-
-
-
 
 function colorsList() {
     let colorsElem = document.createElement("div");
     colorsElem.className = "colorsCont";
     panel.appendChild(colorsElem);
-    for (let color of JSON.parse(localStorage.getItem("colorsArr"))){
+    for (let color of JSON.parse(localStorage.getItem("colorsArr"))) {
         let colorElem = document.createElement("button");
         colorElem.style.width = "15px";
         colorElem.style.height = "15px";
@@ -152,6 +150,7 @@ function colorsList() {
 let addColor = document.getElementById("add_color");
 addColor.addEventListener("click", addColorInArr);
 colorsList();
+
 function addColorInArr() {
     let colorsElem = document.querySelector(".colorsCont");
     panel.removeChild(colorsElem);
@@ -169,15 +168,13 @@ function addColorInArr() {
         addColor.addEventListener("click", addColorInArr);
     })
 }
+
 async function convertCanvasToImage() {
     let canvas = document.getElementById('editor');
     let dataUrl = canvas.toDataURL("image/png");
     // let newTab = window.open('about:blank','image from canvas');
     // newTab.document.write("<img src='" + dataUrl +"' alt='from canvas'/>");
-    //let form = new FormData();
-    //form.set('url', dataUrl);
-    console.log(dataUrl)
-    let res = await fetch("/send/send-img", {
+    await fetch("/send/send-img", {
         method: "POST",
         headers: {
             "Content-type": "application/json; charset=UTF-8"
@@ -185,11 +182,8 @@ async function convertCanvasToImage() {
         body: JSON.stringify({url: dataUrl}),
 
     });
-    window.location.href = '/user/profile'
+    window.location.href = '/user/profile';
 }
+
 let saveBtn = document.getElementById("save-img");
 saveBtn.addEventListener("click", convertCanvasToImage);
-
-
-
-

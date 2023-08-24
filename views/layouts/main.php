@@ -35,14 +35,10 @@ AppAsset::register($this);
             'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
         ],
     ]);
-    $linkItems = [
-        ['label' => 'Главная', 'url' => ['/editor/create']],
-    ];
     if (!Yii::$app->user->isGuest) {
         $linkItems[] = [
             'label' => 'рисовать', 'url' => ['/editor/create']
         ];
-
         $linkItems[] = (
             '<li>'
             . Html::beginForm(['/user/logout'], 'post', ['class' => 'form-inline'])
