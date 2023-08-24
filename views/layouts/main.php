@@ -29,7 +29,7 @@ AppAsset::register($this);
 <header>
     <?php
     NavBar::begin([
-        'brandLabel' => 'Книжный каталог',
+        'brandLabel' => 'Рисовалка',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
@@ -47,7 +47,7 @@ AppAsset::register($this);
             '<li>'
             . Html::beginForm(['/user/logout'], 'post', ['class' => 'form-inline'])
             . Html::submitButton(
-                'Выход (' . Yii::$app->user->identity->username . ')',
+                'Выход (' . Yii::$app->user->identity->login . ')',
                 ['class' => 'btn btn-link logout']
             )
             . Html::endForm()
