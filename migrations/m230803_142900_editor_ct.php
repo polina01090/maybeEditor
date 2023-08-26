@@ -28,7 +28,8 @@ class m230803_142900_editor_ct extends Migration
             'id' => $this->primaryKey(),
             'name' => $this->string(100)->notNull(),
             'url' => $this->text()->notNull(),
-            'user_id' => $this->integer()->notNull()
+            'user_id' => $this->integer()->notNull(),
+            'status' => $this->integer()->notNull()
         ]);
         $this->addForeignKey(
             'fk-pictures-user_id',

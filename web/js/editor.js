@@ -11,7 +11,6 @@ let penStyle = {
     painting: false,
 }
 let eraserStyle = {
-    size: 15,
     x: 0,
     y: 0,
     painting: false,
@@ -122,7 +121,7 @@ function erase(e) {
     if (!eraserStyle.painting) return;
     eraserStyle.x = e.pageX - this.offsetLeft;
     eraserStyle.y = e.pageY - this.offsetTop;
-    ctx.clearRect(eraserStyle.x - eraserStyle.size / 2, eraserStyle.y - eraserStyle.size / 2, eraserStyle.size, eraserStyle.size);
+    ctx.clearRect(eraserStyle.x - size.value / 2, eraserStyle.y - size.value / 2, size.value, size.value);
 }
 
 let panel = document.getElementById("panel-edit");
@@ -170,6 +169,7 @@ function addColorInArr() {
 }
 
 async function convertCanvasToImage() {
+    let name_canvas = document.getElementById('name');
     let canvas = document.getElementById('editor');
     let dataUrl = canvas.toDataURL("image/png");
     // let newTab = window.open('about:blank','image from canvas');
@@ -179,7 +179,7 @@ async function convertCanvasToImage() {
         headers: {
             "Content-type": "application/json; charset=UTF-8"
         },
-        body: JSON.stringify({url: dataUrl}),
+        body: JSON.stringify({url: dataUrl, name: name_canvas.value}),
 
     });
     window.location.href = '/user/profile';

@@ -51,6 +51,7 @@ AppAsset::register($this);
         );
     } else {
         $linkItems[] = ['label' => 'Вход', 'url' => ['/user/login']];
+        $linkItems[] = ['label' => 'Регистрация', 'url' => ['/user/registration']];
     }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],

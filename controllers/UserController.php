@@ -23,14 +23,14 @@ class UserController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
+                'only' => ['logout', 'login', 'registration', 'profile'],
                 'rules' => [
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['logout', 'profile'],
                         'allow' => true,
                         'roles' => ['@'],
                     ], [
-                        'actions' => ['login'],
+                        'actions' => ['login','registration'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
@@ -44,6 +44,7 @@ class UserController extends Controller
             ],
         ];
     }
+
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
@@ -61,7 +62,8 @@ class UserController extends Controller
         ]);
     }
 
-    public function actionRegistration(){
+    public function actionRegistration()
+    {
         $model = new UserAdd();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             UserRepository::addUser($model->login, $model->password, $model->username);
@@ -72,7 +74,8 @@ class UserController extends Controller
         ]);
     }
 
-    public function actionProfile(){
+    public function actionProfile()
+    {
         $pictures = EditorRepository::getPicturesAsArray(['user_id' => Yii::$app->user->identity->id]);
         return $this->render('profile', [
             'model' => $pictures

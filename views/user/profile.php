@@ -3,6 +3,6 @@
 ?>
 <p>hi</p>
 <?php foreach ($model as $item):?>
-    <img src='<?=$item['name']?>' alt='from canvas'/>
+    <p><?=$item['name']?></p>
     <img src='<?=$item['url']?>' alt='from canvas'/>
 <?php endforeach;?>

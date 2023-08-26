@@ -17,9 +17,7 @@ class SendController extends Controller
         //    return print_r($model, true);
         //}
         $request = Yii::$app->request->post();
-        EditorRepository::addPicture('Без названия', $request['url']);
-        return print_r($request['url']);
-
+        EditorRepository::addPicture($request['name'], $request['url']);
     }
 
 }

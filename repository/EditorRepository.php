@@ -29,6 +29,7 @@ class EditorRepository
         $user->name = $name;
         $user->url = $url;
         $user->user_id = Yii::$app->user->identity->id;
+        $user->status = 0;
         $user->save();
     }
 }

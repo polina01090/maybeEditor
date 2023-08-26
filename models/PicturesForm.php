@@ -12,6 +12,7 @@ use yii\db\ActiveRecord;
  * @property string $name
  * @property string $url
  * @property int $user_id
+ * @property int $status
  *
  */
 class PicturesForm extends ActiveRecord

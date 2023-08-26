@@ -3,3 +3,10 @@
     flex-direction: row;
     justify-content: space-between;
 }
+#panel-edit{
+    display: flex;
+    flex-direction: column;
+}
+#name{
+    margin: 10px 0;
+}

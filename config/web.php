@@ -27,6 +27,7 @@ $config = [
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
+            'loginUrl' => ['user/login']
         ],
         'errorHandler' => [
             'errorAction' => 'user/error',
@@ -51,7 +52,7 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                '/' => 'user/profile'
+                '/' => 'editor/list'
             ],
         ],
 
