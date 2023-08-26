@@ -30,7 +30,7 @@ class UserController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                     ], [
-                        'actions' => ['login','registration'],
+                        'actions' => ['login', 'registration'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],

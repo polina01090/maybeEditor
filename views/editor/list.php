@@ -2,7 +2,7 @@
 /** @var $pictures */
 /** @var $users */
 ?>
-
+<p></p>
 <div class="pictures">
     <?php foreach ($pictures as $picture): ?>
     <div><?=$picture['name']?></div>

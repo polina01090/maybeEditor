@@ -9,17 +9,18 @@ use yii\base\Model;
  * This is the model class for table "pictures".
  *
  * @property string $url
+ * @property string $name
  *
  */
 class PicturesSendForm extends Model
 {
 
-    public $url;
+    public $url,$name;
 
     public function rules()
     {
         return [
-            [['url'], 'required'],
+            [['url', 'name'], 'required'],
         ];
     }
 }

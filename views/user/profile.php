@@ -1,7 +1,7 @@
 <?php
 /** @var $model */
 ?>
-<p>hi</p>
+<p>profile</p>
 <?php foreach ($model as $item):?>
     <p><?=$item['name']?></p>
     <img src='<?=$item['url']?>' alt='from canvas'/>

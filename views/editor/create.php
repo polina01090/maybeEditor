@@ -1,5 +1,8 @@
 <?php
-\app\assets\EditorAsset::register($this)
+
+use app\assets\EditorAsset;
+
+EditorAsset::register($this)
 
 ?>
 
