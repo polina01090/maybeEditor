@@ -18,6 +18,10 @@ let eraserStyle = {
 
 let points = [];
 
+function clearCanvas(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+}
+
 let pen = document.getElementById("pen");
 let eraser = document.getElementById("eraser");
 pen.addEventListener("click", () => {
@@ -136,8 +140,10 @@ function colorsList() {
     panel.appendChild(colorsElem);
     for (let color of JSON.parse(localStorage.getItem("colorsArr"))) {
         let colorElem = document.createElement("button");
-        colorElem.style.width = "15px";
-        colorElem.style.height = "15px";
+        colorElem.style.width = "50px";
+        colorElem.style.height = "50px";
+        colorElem.style.borderRadius = "100%";
+
         colorElem.style.background = color;
         colorsElem.appendChild(colorElem);
         colorElem.addEventListener("click", () => {
@@ -155,6 +161,10 @@ function addColorInArr() {
     panel.removeChild(colorsElem);
     let newColor = document.createElement("input");
     newColor.type = "color";
+    newColor.style.width = "50px";
+    newColor.style.height = "50px";
+    newColor.style.marginTop = "15px";
+
     panel.appendChild(newColor);
     addColor.removeEventListener("click", addColorInArr)
     addColor.addEventListener("click", function SubmitColor() {

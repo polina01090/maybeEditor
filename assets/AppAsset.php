@@ -26,7 +26,9 @@ class AppAsset extends AssetBundle
     ];
     public $images = [
         'images/login.png',
-        'images/password.png'
+        'images/password.png',
+        'images/pencil.png',
+        'images/eraser.png'
     ];
     public $depends = [
         'yii\web\YiiAsset',

@@ -17,15 +17,18 @@ EditorAsset::register($this)
     <canvas id="editor" style="border: 1px solid black"></canvas>
     <div id="panel-edit">
         <input id="name" type="text" placeholder="имя проекта" value="Без имени">
-        <button class="no_active" id="pen">Brush</button>
+        <div id="penal">
+            <button class="no_active" id="pen"><img src="/images/pencil.png" alt="pencil"></button>
+            <button class="no_active" id="eraser"><img src="/images/eraser.png" alt="pencil"></button>
+        </div>
+
         <div class="option">
             <label for="size-slider"></label>
             <input type="range" id="size-slider" min="1" max="200" value="5">
         </div>
-        <button class="no_active" id="eraser">Eraser</button>
-        <div class="row_buttons">
 
-            <button class="clear-canvas">Clear Canvas</button>
+        <div class="row_buttons">
+            <button class="clear-canvas" onclick="clearCanvas()">Clear Canvas</button>
             <button id="add_color">Добавить цвет</button>
             <button id="save-img">Save As Image</button>
         </div>

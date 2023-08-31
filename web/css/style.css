@@ -6,7 +6,46 @@
 #panel-edit{
     display: flex;
     flex-direction: column;
+    margin: 0 20px;
+
 }
 #name{
     margin: 10px 0;
+}
+#pen, #eraser{
+    width: 78px;
+    padding: 0;
+    margin: 10px 15px;
+}
+#pen img, #eraser img{
+    width: 75px;
+    height: auto;
+}
+#penal{
+    display: flex;
+    flex-direction: row;
+}
+.row_buttons{
+    display: flex;
+    flex-direction: row;
+}
+.row_buttons button{
+    background: black;
+    color: white;
+    margin: 0 10px;
+    padding: 10px 5px;
+
+}
+#size-slider{
+    width: 250px;
+}
+.colorsCont{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+.colorsCont button{
+    margin: 10px;
+
 }
