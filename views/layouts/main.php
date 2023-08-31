@@ -37,7 +37,10 @@ AppAsset::register($this);
     ]);
     if (!Yii::$app->user->isGuest) {
         $linkItems[] = [
-            'label' => 'рисовать', 'url' => ['/editor/create']
+            'label' => 'рисовать', 'url' => ['/editor/create'],
+        ];
+        $linkItems[] = [
+            'label' => 'профиль', 'url' => ['/user/profile'],
         ];
         $linkItems[] = (
             '<li>'

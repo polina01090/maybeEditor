@@ -28,6 +28,14 @@ class EditorController extends Controller
             'users' => $usersArray
         ]);
     }
+    public function actionPicture($id){
+        $picture = EditorRepository::getPictureAsArray($id);
+        return $this->render('picture', [
+            'picture' => $picture
+        ]);
+
+    }
+
 
 
 }

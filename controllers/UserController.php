@@ -5,6 +5,7 @@ namespace app\controllers;
 
 //use app\models\ChangePasswordForm;
 use app\models\ChangePasswordForm;
+use app\models\EditForm;
 use app\models\LoginForm;
 use app\models\UserAdd;
 use app\repository\EditorRepository;
@@ -80,6 +81,22 @@ class UserController extends Controller
         return $this->render('profile', [
             'model' => $pictures
         ]);
+    }
+
+    public function actionEdit($id){
+        $model = new EditForm();
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            EditorRepository::editPicture($id, $model->name, $model->status);
+            $this->redirect('profile');
+        }
+        $picture = EditorRepository::getPictureById($id);
+        $model->name = $picture->name;
+        $model->status = $picture->status;
+
+        return $this->render('edit', [
+            'model' => $model,
+        ]);
+
     }
 
     public function actionLogout()

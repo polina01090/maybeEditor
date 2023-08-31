@@ -8,15 +8,10 @@
 use yii\bootstrap5\ActiveForm;
 use yii\bootstrap5\Html;
 
-$this->title = 'Login';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'LOGIN';
 ?>
 <div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>Please fill out the following fields to login:</p>
-
-    <div class="row">
+    <div class="login-form">
         <div class="col-lg-5">
 
             <?php $form = ActiveForm::begin([
@@ -28,20 +23,29 @@ $this->params['breadcrumbs'][] = $this->title;
                     'errorOptions' => ['class' => 'col-lg-7 invalid-feedback'],
                 ],
             ]); ?>
-
-            <?= $form->field($model, 'login')->textInput(['autofocus' => true]) ?>
-
-            <?= $form->field($model, 'password')->passwordInput() ?>
-
-            <?= $form->field($model, 'rememberMe')->checkbox([
-                'template' => "<div class=\"custom-control custom-checkbox\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
-            ]) ?>
-
-            <div class="form-group">
-                <div>
-                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+            <div class="log-form">
+                <h1 class="login-header"><?= Html::encode($this->title) ?></h1>
+                <div class="login-elem">
+                    <img src="/images/login.png" alt="login">
+                    <?= $form->field($model, 'login')->textInput()->label(false) ?>
                 </div>
+                <div class="password-elem">
+                    <img src="/images/password.png" alt="password">
+                    <?= $form->field($model, 'password')->passwordInput()->label(false) ?>
+                </div>
+
+                <div class="log-elems">
+                    <?= $form->field($model, 'rememberMe')->checkbox([
+                        'template' => "<div class=\"custom-control custom-checkbox\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
+                    ]) ?>
+                    <div class="form-group">
+                        <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                    </div>
+                </div>
+
             </div>
+
+
 
             <?php ActiveForm::end(); ?>
 

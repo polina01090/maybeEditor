@@ -24,6 +24,13 @@ class EditorRepository
     public static function getPicturesByCondition($where){
         return Editor::find()->where($where)->all();
     }
+    public static function editPicture($id, $name, $status)
+    {
+        $picture = Editor::find()->where(['id' => $id])->one();
+        $picture->name = $name;
+        $picture->status = $status;
+        $picture->save();
+    }
     public static function addPicture($name, $url){
         $user = new Editor();
         $user->name = $name;

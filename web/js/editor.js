@@ -191,3 +191,4 @@ async function convertCanvasToImage() {
 
 let saveBtn = document.getElementById("save-img");
 saveBtn.addEventListener("click", convertCanvasToImage);
+
